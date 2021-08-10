@@ -21,6 +21,6 @@ bulid-image:
 deploy-cluster:
   stage: deploy
   script:
-    - echo hi
+    - sh ./jmeter_cluster_create.sh
   tags:
     - public
