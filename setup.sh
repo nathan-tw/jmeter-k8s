@@ -7,8 +7,10 @@ working_dir=`pwd`
 influxdb_pod=`kubectl get po --kubeconfig=$KUBE_CONFIG -n jmeter | grep influxdb-jmeter | awk '{print $1}'`
 kubectl exec --kubeconfig=$KUBE_CONFIG -i -n jmeter $influxdb_pod -- influx setup --org jmeter-org --bucket jmeter-bucket --username admin123 --password admin123 --force
 bucket_id=`kubectl exec --kubeconfig=$KUBE_CONFIG -i -n jmeter $influxdb_pod -- influx bucket list -n jmeter-bucket | awk 'NR!=1{print $1}'`
-kubectl exec --kubeconfig=$KUBE_CONFIG -i -n jmeter $influxdb_pod -- influx auth create -o jmeter-org -d jmeter-token --read-bucket 17d82f7d285e0d2b \
+kubectl exec --kubeconfig=$KUBE_CONFIG -i -n jmeter $influxdb_pod -- influx auth create -o jmeter-org -d jmeter-token --read-bucket $bucket_id \
 --read-dashboards --read-tasks --read-telegrafs --read-user
+
+sleep 5
 ## Create the influxdb datasource in Grafana
 
 # echo "Creating the Influxdb data source"
