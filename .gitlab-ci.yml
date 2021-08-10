@@ -18,9 +18,20 @@ bulid-image:
     - docker push $REGISTRY_HOST/jmeter-base:latest
   tags:
     - public
+  only:
+    - build
+
 deploy-cluster:
   stage: deploy
   script:
     - sh ./jmeter_cluster_create.sh
+    - sleep 30
+  tags:
+    - public
+
+setup-db:
+  stage: setup-db
+  script:
+    - sh ./setup.sh
   tags:
     - public
