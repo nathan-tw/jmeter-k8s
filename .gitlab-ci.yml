@@ -1,0 +1,26 @@
+stages:
+  - build
+  - deploy
+  - setup-db
+  - invoke
+
+bulid-image:
+  stage: build
+  script:
+    - cd docker-images
+    - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY_HOST
+    - sh ./dockerimages.sh
+    - docker tag jmeter-base $REGISTRY_HOST/jmeter-base:latest
+    - docker tag jmeter-master $REGISTRY_HOST/jmeter-master:latest
+    - docker tag jmeter-slave $REGISTRY_HOST/jmeter-slave:latest
+    - docker push $REGISTRY_HOST/jmeter-slave:latest
+    - docker push $REGISTRY_HOST/jmeter-master:latest
+    - docker push $REGISTRY_HOST/jmeter-base:latest
+  tags:
+    - public
+deploy-cluster:
+  stage: deploy
+  script:
+    - echo hi
+  tags:
+    - public
