@@ -16,6 +16,7 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
+  namespace: jmeter
   annotations:
     nginx.ingress.kubernetes.io/service-weight: 'jmeter-grafana: 100'
   name: jmeter-grafana-ingress
