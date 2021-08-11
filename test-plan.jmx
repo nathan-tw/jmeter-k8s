@@ -36,7 +36,7 @@
               </elementProp>
               <elementProp name="influxdbUrl" elementType="Argument">
                 <stringProp name="Argument.name">influxdbUrl</stringProp>
-                <stringProp name="Argument.value">http://jmeter-influxdb:8086/api/v2/write?org=jmeter-org&amp;amp;bucket=jmeter-bucket</stringProp>
+                <stringProp name="Argument.value">${__urlencode(http://jmeter-influxdb:8086/api/v2/write?org=jmeter-org&amp;amp;bucket=jmeter-bucket)}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="application" elementType="Argument">
