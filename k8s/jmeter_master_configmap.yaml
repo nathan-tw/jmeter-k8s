@@ -10,5 +10,7 @@ data:
     #!/bin/bash
 
     /jmeter/apache-jmeter-*/bin/jmeter -n -Dlog_level.jmeter=DEBUG -t $1 -R`getent ahostsv4 jmeter-slaves-svc | cut -d' ' -f1 | sort -u | awk -v ORS=, '{print $1}' | sed 's/,$//'` \
-    -JTARGET_HOST=$2 -JTARGET_PATH=$3 -JTARGET_LOOPS=$4 -JTHREADS=$5 \
-    -JinfluxdbUrl=$6 -JinfluxdbToken=$7 
+    -JTARGET_HOST=$2 -JTARGET_PATH=$3 -JTARGET_PORT=$4 \
+    -JTARGET_PROTOCOL=$5  \
+    -JTARGET_LOOPS=$6 -JTHREADS=$7 \
+    -JinfluxdbUrl=$8 -JinfluxdbToken=$9 
