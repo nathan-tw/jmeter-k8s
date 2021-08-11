@@ -16,6 +16,8 @@ influxdbToken=`kubectl exec --kubeconfig=$KUBE_CONFIG -i -n jmeter $influxdb_pod
 
 echo $1 $2 $3 $4 $5 $6 $7 $8 $influxdbToken
 
+sed -i 's/$influxdbToken/$influxdbToken/g' test-plan.jmx
+sed -i 's/$influxdbUrl/http://jmeter-influxdb:8086/api/v2/write?org=jmeter-org&amp;bucket=jmeter-bucket/g' test-plan.jmx
 
 test_name="$(basename "$jmx")"
 master_pod=`kubectl get po  --kubeconfig=$KUBE_CONFIG -n jmeter | grep jmeter-master | awk '{print $1}'`
