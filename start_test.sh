@@ -11,6 +11,7 @@ then
     exit
 fi
 
+influxdb_pod=`kubectl get po --kubeconfig=$KUBE_CONFIG -n jmeter | grep influxdb-jmeter | awk '{print $1}'`
 influxdbToken=`kubectl exec --kubeconfig=$KUBE_CONFIG -i -n jmeter $influxdb_pod -- influx auth list | awk '$0 ~ /jmeter-token/{print $1}'`
 
 
