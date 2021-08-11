@@ -2,8 +2,7 @@ stages:
   - build
   - deploy
   - setup-db
-  - invoke
-
+  
 bulid-image:
   stage: build
   script:
