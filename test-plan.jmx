@@ -76,7 +76,7 @@
               </elementProp>
               <elementProp name="influxdbToken" elementType="Argument">
                 <stringProp name="Argument.name">influxdbToken</stringProp>
-                <stringProp name="Argument.value">z86KsMqmno52_ZN_i8NLiWTsL5ksWwCPWvfLnUo7z2fUzssnvCvFga9jXx6wpvXOHb2-A_lexFznkQBlVhO7gQ==</stringProp>
+                <stringProp name="Argument.value">${__property(influxdbToken,,)}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
