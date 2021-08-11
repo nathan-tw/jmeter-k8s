@@ -14,3 +14,5 @@ data:
     -JTARGET_PROTOCOL=$5  \
     -JTARGET_LOOPS=$6 -JTHREADS=$7 \
     -JinfluxdbUrl=$8 -JinfluxdbToken=$9 
+
+    cat jmeter.log

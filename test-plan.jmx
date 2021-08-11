@@ -76,7 +76,7 @@
               </elementProp>
               <elementProp name="influxdbToken" elementType="Argument">
                 <stringProp name="Argument.name">influxdbToken</stringProp>
-                <stringProp name="Argument.value">jP7NIaDEz73va4hQuAfpsudHIsd0aNjXDNHEA9ShsFt4Et-V6B4rV9s8dGDQ7MzXE7o-b0P7avRABhcnX3dgRw==</stringProp>
+                <stringProp name="Argument.value">z86KsMqmno52_ZN_i8NLiWTsL5ksWwCPWvfLnUo7z2fUzssnvCvFga9jXx6wpvXOHb2-A_lexFznkQBlVhO7gQ==</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -92,7 +92,7 @@
           <stringProp name="HTTPSampler.port">443</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/get</stringProp>
+          <stringProp name="HTTPSampler.path">/</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
