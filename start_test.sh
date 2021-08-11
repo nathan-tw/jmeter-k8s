@@ -1,7 +1,7 @@
 working_dir=`pwd`
 
 
-jmx=$1
+jmx="$1"
 [ -n "$jmx" ] || read -p 'Enter path to the jmx file ' jmx
 
 if [ ! -f "$jmx" ];
@@ -20,10 +20,9 @@ echo $3
 echo $4
 echo $5
 echo $6
-
 echo $influxdbToken
 
 test_name="$(basename "$jmx")"
 master_pod=`kubectl get po  --kubeconfig=$KUBE_CONFIG -n jmeter | grep jmeter-master | awk '{print $1}'`
 kubectl cp  --kubeconfig=$KUBE_CONFIG -n jmeter "$jmx" "$master_pod:/$test_name"
-kubectl exec  --kubeconfig=$KUBE_CONFIG -i -n jmeter $master_pod -- /bin/bash /load_test $test_name $2 $3 $4 $5 $6 $influxdbToken
+kubectl exec  --kubeconfig=$KUBE_CONFIG -i -n jmeter $master_pod -- /bin/bash /load_test "$test_name" "$2" "$3" "$4" "$5" "$6" "$influxdbToken"
