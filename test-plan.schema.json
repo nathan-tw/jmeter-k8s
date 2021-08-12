@@ -1,0 +1,40 @@
+{
+	"title": "load test schema",
+	"type": "object",
+	"properties": {
+		"LOOP_COUNT": {
+			"type": "string"
+		},
+		"THREADS": {
+			"type": "string"
+		},
+		"RAMP_UP_PERIOD": {
+			"type": "string"
+		},
+		"TARGETS": {
+			"type": "array",
+			"items": { "$refs": "/$defs/host" }
+		}
+	},
+	"$defs": {
+		"host": {
+			"type": "object",
+			"required": ["TARGET_HOST", "TARGET_PORT", "TARGET_PROTOCOL", "TARGET_PATH"],
+			"properties": {
+				"TARGET_HOST": {
+					"type": "string"
+				},
+				"TARGET_PORT": {
+					"type": "string"
+				},
+				"TARGET_PROTOCOL": {
+					"type": "string"
+				},
+				"TARGET_PATH": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"required": ["LOOP_COUNT", "THREADS", "RAMP_UP_PERIOD"]
+}

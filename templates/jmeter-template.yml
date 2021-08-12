@@ -1,0 +1,54 @@
+
+set-up-test-env:
+    stage: set-up-test-env
+    script:
+        - kubectl --kubeconfig  $KUBE_CONFIG create ns test
+        - /twk8s/helm3 upgrade --install --kubeconfig  $KUBE_CONFIG --set namespace=test -f  $VALUE_FILE $HELM_FOLDER
+    tags:
+        - smx-runner
+
+
+load-test:
+    stage: load-test
+    image:
+        name: justb4/jmeter:5.3
+        entrypoint: ["/bin/bash", "-c"]
+    script:  
+        - apk add git py3-pip
+        - pip install chevron jsonschema
+        - git -c http.sslVerify=false clone $DEPLOY_TOKEN
+        - |
+            if [[ jsonschema -i test-plan.json stresstestsinglenode/test-plan.schema.json ]]; then
+                exit 1
+            fi
+        - chevron -d test-plan.json stresstestsinglenode/test-plan-template.jmx > test-plan.jmx  
+        - sh ./stresstestsinglenode/test.sh
+    tags:
+        - docker
+    artifacts:
+        paths:
+        - report
+        expire_in: 1 week 
+
+
+
+tear-down-test-env:
+    stage: tear-down-test-env
+    script:
+        - kubectl --kubeconfig  $KUBE_CONFIG delete ns test
+    tags:
+        - smx-runner
+
+
+validate-max-res:
+    stage: validate
+    script:
+      - |
+        if [ $(expr `cat report/statistics.json | jq .Total.maxResTime | cut -d . -f 1` - $MAX_RES_TIME) -gt 0 ];then
+          echo "exceed limited max response time"
+          exit 1;
+        fi
+    dependencies:
+      - load-test
+    tags:
+      - smx-runner
