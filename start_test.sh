@@ -18,8 +18,6 @@ influxdbToken=`kubectl exec --kubeconfig=$KUBE_CONFIG -i -n jmeter $influxdb_pod
 sed -i "s/influxdbTokenValue/$influxdbToken/g" test-plan.jmx
 sed -i "s/influxdbUrlValue/$8/" test-plan.jmx
 
-cat test-plan.jmx
-
 test_name="$(basename "$jmx")"
 master_pod=`kubectl get po  --kubeconfig=$KUBE_CONFIG -n jmeter | grep jmeter-master | awk '{print $1}'`
 kubectl cp --kubeconfig=$KUBE_CONFIG -n jmeter "$jmx" "$master_pod:/$test_name"
