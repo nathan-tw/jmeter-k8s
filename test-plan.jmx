@@ -37,7 +37,7 @@
               <elementProp name="influxdbUrl" elementType="Argument">
                 <boolProp name="HTTPArgument.always_encode">true</boolProp>
                 <stringProp name="Argument.name">influxdbUrl</stringProp>
-                <stringProp name="Argument.value">$influxdbUrl</stringProp>
+                <stringProp name="Argument.value">influxdbUrlValue</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="application" elementType="Argument">
@@ -77,7 +77,7 @@
               </elementProp>
               <elementProp name="influxdbToken" elementType="Argument">
                 <stringProp name="Argument.name">influxdbToken</stringProp>
-                <stringProp name="Argument.value">$influxdbToken</stringProp>
+                <stringProp name="Argument.value">influxdbTokenValue</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
