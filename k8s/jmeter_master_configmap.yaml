@@ -13,6 +13,5 @@ data:
     -GTARGET_HOST=$2 -GTARGET_PATH=$3 -GTARGET_PORT=$4 \
     -GTARGET_PROTOCOL=$5  \
     -GTARGET_LOOPS=$6 -GTHREADS=$7 \
-    -GinfluxdbUrl=$8 -GinfluxdbToken=$9 
 
     cat jmeter.log

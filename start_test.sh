@@ -23,4 +23,4 @@ cat test-plan.jmx
 test_name="$(basename "$jmx")"
 master_pod=`kubectl get po  --kubeconfig=$KUBE_CONFIG -n jmeter | grep jmeter-master | awk '{print $1}'`
 kubectl cp --kubeconfig=$KUBE_CONFIG -n jmeter "$jmx" "$master_pod:/$test_name"
-kubectl exec  --kubeconfig=$KUBE_CONFIG -i -n jmeter $master_pod -- /bin/bash /load_test "$test_name" $2 $3 $4 $5 $6 $7 $8 $influxdbToken
+kubectl exec  --kubeconfig=$KUBE_CONFIG -i -n jmeter $master_pod -- /bin/bash /load_test "$test_name" $2 $3 $4 $5 $6 $7
