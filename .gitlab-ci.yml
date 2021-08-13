@@ -5,6 +5,6 @@ stages:
 invoke:
   stage: invoke
   script:
-    - sh ./start_test.sh test-plan-flux.jmx $TARGET_HOST $TARGET_PATH $TARGET_PORT $TARGET_PROTOCOL $TARGET_LOOPS $THREADS $influxdbUrl 
+    - sh ./start_test.sh test-plan.jmx $TARGET_HOST $TARGET_PATH $TARGET_PORT $TARGET_PROTOCOL $TARGET_LOOPS $THREADS $influxdbUrl 
   tags:
     - public
