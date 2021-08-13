@@ -32,4 +32,4 @@ spec:
               service:
                 name: jmeter-grafana
                 port:
-                  number: 8080
+                  number: 3000
