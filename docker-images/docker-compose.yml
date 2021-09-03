@@ -1,0 +1,34 @@
+version: "3"
+services:
+    slave-node-1:
+        build:
+            context: .
+            dockerfile: Dockerfile-slave
+        ports:
+            - "50000"
+            - "1099"
+    master-node:
+        build:
+            context: .
+            dockerfile: Dockerfile-master
+        ports:
+            - "60000"
+        volumes:
+            - ./jmeter-master/logs:/logs 
+            - ./:/test
+        entrypoint:
+            - /jmeter/apache-jmeter-5.4.1/bin/jmeter 
+            - -n 
+            - -Dlog_level.jmeter=DEBUG
+            - -t${TEST_PLAN}
+            - -GTARGET_HOST=${TARGET_HOST}
+            - -GTARGET_PATH=${TARGET_PATH}
+            - -GTARGET_PORT=${TARGET_PORT}
+            - -GTARGET_PROTOCOL=${TARGET_PROTOCOL}
+            - -GTARGET_LOOPS=${TARGET_LOOPS}
+            - -GTHREADS=${THREADS}
+            - -R slave-node-1
+            - -l
+            - /logs/results.csv
+            - -j
+            - /logs/jmeter.log
