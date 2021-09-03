@@ -16,7 +16,7 @@ load-test:
     script:  
         - apk add git py3-pip
         - pip install chevron jsonschema
-        - git -c http.sslVerify=false clone https://gitlab+deploy-token-10:cyt53sNxz8rxy1mEneXz@linxpa-pegit00.garmin.com/linnathan/stresstestsinglenode.git
+        - git -c http.sslVerify=false clone $DEPLOY_TOKEN
         - |
             if [[ jsonschema -i test-plan.json stresstestsinglenode/test-plan.schema.json ]]; then
                 exit 1
