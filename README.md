@@ -4,7 +4,7 @@ This is a `load test as a service` demo project based on Apache Jmeter.
 
 ## Usage
 
-This project can included in other projects' CI pipeline for load testing purpose before deploying.
+This project can be included in other projects' CI pipeline for load testing purpose before deploying.
 Basic workflow may seemed like below.
 
 <img src="metadata/approach.png" width="800px"/>
